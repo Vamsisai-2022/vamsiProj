@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Converter</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    .container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: blue;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+label {
+  margin-bottom: 0.5rem;
+}
+
+input[type="number"], select {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+button {
+  padding: 0.5rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: red;
+}
+
+p {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Temperature Converter</h1>
+    <form>
+      <label for="temp">Enter temperature:</label>
+      <input type="number" id="temp" name="temp">
+      <label for="scale">Select scale:</label>
+      <select id="scale" name="scale">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+      </select>
+      <button type="button" onclick="convert()">Convert</button>
+    </form>
+    <p id="result"></p>
+  </div>
+  <script>
+    function convert() {
+
+  const tempInput = document.getElementById("temp");
+  const scaleInput = document.getElementById("scale");
+  const temp = parseFloat(tempInput.value);
+  const scale = scaleInput.value;
+
+  let result;
+  if (scale === "celsius") {
+    result = (temp - 32) * 5 / 9;
+    result = result.toFixed(2) + "°C";
+  }
+
+  
+  else {
+    result = temp * 9 / 5 + 32;
+    result = result.toFixed(2) + "°F";
+  }
+
+
+  const resultElement = document.getElementById("result");
+  resultElement.innerHTML = `Converted temperature: ${result}`;
+}
+
+  </script>
+</body>
+</html>
